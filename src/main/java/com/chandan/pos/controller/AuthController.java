@@ -14,7 +14,7 @@ import com.chandan.pos.service.AuthService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
-@RequestMapping
+@RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {
 
