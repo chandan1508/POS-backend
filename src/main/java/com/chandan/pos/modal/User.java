@@ -9,6 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,6 +33,9 @@ public class User {
     @Column(nullable = false, unique = true)
     @Email(message = "Enmail should be valid")
     private String email;
+
+    @ManyToOne
+    private Store store;
 
     private String phone;
 
