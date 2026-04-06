@@ -1,5 +1,6 @@
 package com.chandan.pos.mapper;
 
+import com.chandan.pos.modal.Category;
 import com.chandan.pos.modal.Product;
 import com.chandan.pos.modal.Store;
 import com.chandan.pos.payload.dto.ProductDTO;
@@ -25,8 +26,8 @@ public class ProductMapper {
             dto.setStoreId(product.getStore().getId());
         }
 
-        // Category not implemented yet
-        // dto.setCategoryId(...);
+        
+        dto.setCategory(CategoryMapper.toDTO(product.getCategory()));
 
         dto.setCreatedAt(product.getCreatedAt());
         dto.setUpdatedAt(product.getUpdatedAt());
@@ -35,12 +36,14 @@ public class ProductMapper {
     }
     
 
-    public static Product toEntity(ProductDTO productDTO, Store store){
+    public static Product toEntity(ProductDTO productDTO, Store store, Category category){
         if(productDTO == null) return null;
 
         Product product = new Product();
 
         product.setName(productDTO.getName());
+        product.setStore(store);
+        product.setCategory(category);
         product.setSku(productDTO.getSku());
         product.setDescription(productDTO.getDescription());
         product.setMrp(productDTO.getMrp());
