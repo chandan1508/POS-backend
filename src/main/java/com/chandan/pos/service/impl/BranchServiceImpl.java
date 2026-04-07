@@ -31,6 +31,8 @@ public class BranchServiceImpl implements BranchService {
     public BranchDTO createBranch(BranchDTO branchDTO) {
         User currentUser = userService.getCurrentUser();
 
+        System.out.println("currentUser :"+ currentUser.getId());
+
         Store store = storeRepository.findByStoreAdminId(currentUser.getId());
 
         Branch branch = BranchMapper.toEntity(branchDTO, store);
