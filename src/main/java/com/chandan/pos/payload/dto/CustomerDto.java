@@ -2,33 +2,21 @@ package com.chandan.pos.payload.dto;
 
 import java.time.LocalDateTime;
 
-import com.chandan.pos.domain.UserRole;
-
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
-
 @Data
-public class UserDto {
-  
+public class CustomerDto {
+
     private Long id;
-    
-  
+
+    @NotBlank(message = "Full name is required")
     private String fullName;
 
- 
     private String email;
 
     private String phone;
 
-    
-    private UserRole role;
-
-    private String password;
-
-    private Long branchId;
-    private Long storeId;
-
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-    private LocalDateTime lastLogin;
 }

@@ -61,7 +61,7 @@ public class InventoryController {
     /**
      * Get Inventory by Product ID (across all branches)
      */
-    @GetMapping("/product/{productId}/branch/{branchId}")
+    @GetMapping("/branch/{branchId}/product/{productId}")
     public ResponseEntity<InventoryDTO> getInventoryByProductIdAndBranchId(
             @PathVariable Long productId,
             @PathVariable Long branchId
