@@ -3,7 +3,6 @@ package com.chandan.pos.payload.dto;
 import java.time.LocalDateTime;
 
 import com.chandan.pos.domain.PaymentType;
-import com.chandan.pos.modal.Order;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.Data;

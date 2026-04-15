@@ -59,4 +59,19 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
             LIMIT 5
             """)
     List<Order> findTop5RecentByBranchId(@Param("branchId") Long branchId);
+
+    @Query("""
+        SELECT o FROM Order o
+        WHERE o.cashier.id  = :cashierId
+          AND o.branch.id   = :branchId
+          AND o.createdAt  >= :from
+          AND o.createdAt  <= :to
+        ORDER BY o.createdAt DESC
+        """)
+List<Order> findByCashierIdAndBranchIdAndCreatedAtBetween(
+        @Param("cashierId") Long cashierId,
+        @Param("branchId")  Long branchId,
+        @Param("from")      LocalDateTime from,
+        @Param("to")        LocalDateTime to
+);
 }

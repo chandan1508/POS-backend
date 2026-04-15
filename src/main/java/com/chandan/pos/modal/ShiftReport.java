@@ -10,6 +10,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -40,6 +41,7 @@ public class ShiftReport {
     @ManyToOne
     private Branch branch;
 
+    @Transient
     private List<PaymentSummary> paymentSummaries;
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -49,7 +51,7 @@ public class ShiftReport {
     private List<Order> recentOrders;
 
     @OneToMany(mappedBy = "shiftReport", cascade = CascadeType.ALL)
-    private List<Order> refunds;
+    private List<Refund> refunds;
 
     
 }
